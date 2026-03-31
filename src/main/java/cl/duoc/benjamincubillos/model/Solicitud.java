@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,10 @@ public class Solicitud {
 
     @NotBlank(message = "El apellido es obligatorio.")
     private String apellido_paciente;
+
+    @Pattern(regexp = "^0*(\\d{1,3}(\\.?\\d{3}){2})-([\\dkK])$", message = "El rut debe estar en el formato XX.XXX.XXX-X o X.XXX.XXX-X")
+    @NotBlank(message = "El rut es obligatorio.")
+    private String rut;
 
     @Min(value = 0, message = "La edad debe estar entre 0 y 110.")
     @Max(value = 110, message = "La edad debe estar entre 0 y 110.")
