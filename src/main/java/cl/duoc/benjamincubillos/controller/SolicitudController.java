@@ -60,14 +60,14 @@ public class SolicitudController {
         return ResponseEntity.noContent().build();
     }
     
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/id")
     public ResponseEntity<Solicitud> buscarSolicitudId(@PathVariable Long id) {
         return solicitudService.getSolicitudId(id)
         .map(ResponseEntity::ok)
         .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{rut}")
+    @GetMapping("/{rut}/rut")
     public ResponseEntity<List<Solicitud>> buscarSolicitudesRut(@PathVariable String rut) {
         List<Solicitud> lista = solicitudService.getSolicitudesRut(rut);
         return lista.isEmpty() 
