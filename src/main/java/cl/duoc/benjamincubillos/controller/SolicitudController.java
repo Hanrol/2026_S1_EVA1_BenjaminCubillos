@@ -19,7 +19,7 @@ import cl.duoc.benjamincubillos.service.SolicitudService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/v1/productos")
+@RequestMapping("api/v1/solicitudes")
 public class SolicitudController {
 
     @Autowired
