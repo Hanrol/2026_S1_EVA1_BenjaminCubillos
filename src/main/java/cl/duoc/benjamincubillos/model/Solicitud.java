@@ -2,6 +2,10 @@ package cl.duoc.benjamincubillos.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -48,6 +52,8 @@ public class Solicitud {
     private String estado_solicitud;
 
     @NotNull(message = "La fecha de registro es obligatoria.")
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @PastOrPresent(message = "La fecha de registro no puede ser una fecha futura.")
     private LocalDate fecha_registro;
 
