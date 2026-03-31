@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +41,11 @@ public class SolicitudRepository {
 
     public Optional<Solicitud> buscarPorId(Long id) {
         return Optional.ofNullable(mapaSolicitud.get(id));
+    }
+
+    public List<Solicitud> buscarPorRut(String rut) {
+        return mapaSolicitud.values().stream()
+        .filter(x -> x.getRut().equals(rut))
+        .collect(Collectors.toList());
     }
 }

@@ -67,4 +67,12 @@ public class SolicitudController {
         .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{rut}")
+    public ResponseEntity<List<Solicitud>> buscarSolicitudesRut(@PathVariable String rut) {
+        List<Solicitud> lista = solicitudService.getSolicitudesRut(rut);
+        return lista.isEmpty() 
+            ? ResponseEntity.notFound().build() 
+            : ResponseEntity.ok(lista);
+    }
+
 }

@@ -45,4 +45,8 @@ public class SolicitudService {
     public Optional<Solicitud> getSolicitudId(Long id) {
         return solicitudRepository.buscarPorId(id);
     }
+
+    public List<Solicitud> getSolicitudesRut(String rut) {
+        return solicitudRepository.buscarPorRut(rut);
+    }
 }
