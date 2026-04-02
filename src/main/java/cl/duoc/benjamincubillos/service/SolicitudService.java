@@ -49,4 +49,12 @@ public class SolicitudService {
     public List<Solicitud> getSolicitudesRut(String rut) {
         return solicitudRepository.buscarPorRut(rut);
     }
+
+    public List<Solicitud> getSolicitudesEstado(String estado) {
+        return solicitudRepository.filtrarPorEstado(estado);
+    }
+
+    public List<Solicitud> getSolicitudesPrioridad() {
+        return solicitudRepository.filtrarPorPrioridad();
+    }
 }

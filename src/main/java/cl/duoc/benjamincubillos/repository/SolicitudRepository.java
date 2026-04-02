@@ -1,6 +1,7 @@
 package cl.duoc.benjamincubillos.repository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,20 @@ public class SolicitudRepository {
 
     public List<Solicitud> buscarPorRut(String rut) {
         return mapaSolicitud.values().stream()
-        .filter(x -> x.getRut().equals(rut))
-        .collect(Collectors.toList());
+            .filter(x -> x.getRut().equals(rut))
+            .collect(Collectors.toList());
     }
+
+    public List<Solicitud> filtrarPorEstado(String estado) {
+        return mapaSolicitud.values().stream()
+            .filter(x -> x.getEstado_solicitud().equalsIgnoreCase(estado))
+            .collect(Collectors.toList());
+    }
+
+    public List<Solicitud> filtrarPorPrioridad() {
+        return mapaSolicitud.values().stream()
+            .sorted(Comparator.comparingInt(Solicitud::getNivel_prioridad).reversed())
+            .collect(Collectors.toList());
+    }
+
 }

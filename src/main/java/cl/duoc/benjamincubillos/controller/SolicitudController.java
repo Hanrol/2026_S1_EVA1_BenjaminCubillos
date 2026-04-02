@@ -75,4 +75,20 @@ public class SolicitudController {
             : ResponseEntity.ok(lista);
     }
 
+    @GetMapping("/{estado}")
+    public ResponseEntity<List<Solicitud>> filtrarPorEstado(@PathVariable String estado) {
+        List<Solicitud> lista = solicitudService.getSolicitudesEstado(estado);
+        return lista.isEmpty()
+            ? ResponseEntity.notFound().build()
+            : ResponseEntity.ok(lista);
+    }
+
+    @GetMapping("/prioridad")
+    public ResponseEntity<List<Solicitud>> listarPorPrioridad() {
+        List<Solicitud> lista = solicitudService.getSolicitudesPrioridad();
+        return lista.isEmpty() 
+            ? ResponseEntity.noContent().build() 
+            : ResponseEntity.ok(lista);
+    }
+
 }
